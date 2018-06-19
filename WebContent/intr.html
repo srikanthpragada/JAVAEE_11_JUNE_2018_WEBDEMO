@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Introduction</title>
+<link rel="stylesheet" href="styles.css" />
+<script>
+function showfee() {
+	var oldstudent = document.getElementById("oldstudent")
+	if (oldstudent.checked)
+		alert('3600')
+	else
+		alert('4000')
+}
+</script>
+</head>
+<body>
+	<h1>Introduction To Java EE</h1>
+	Java EE is used to build web applications.
+	<p />
+	<h2>Topics</h2>
+	Here are important topics:
+
+	<ul class="bright">
+		<li>Servlets</li>
+		<li>JSPs and JSTL</li>
+		<li>Web Services</li>
+	</ul>
+	<p />
+	<input type="checkbox" id="oldstudent">Old Student?
+	<p/>
+	<button onclick="showfee()">Show Course Fee</button>
+
+</body>
+</html>
