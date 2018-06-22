@@ -22,7 +22,7 @@
 	<%
 		String empid = request.getParameter("empid");
 		if (empid == null)
-			return; // stop JSP
+			return; // stop JSP (return from jspService() )
 	%>
 	
 	<jsp:useBean id="emp"  class="beans.EmployeeBean" scope="page"></jsp:useBean>

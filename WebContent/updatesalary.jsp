@@ -25,7 +25,7 @@
 			return; // stop JSP
 
  	    String newsalary = request.getParameter("newsalary");
-	    // Class.forName("jdbc.oracle.driver.OracleDriver")		
+	    Class.forName("oracle.jdbc.driver.OracleDriver");		 // Loading driver 
 		try (Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr")) {
 				PreparedStatement ps = con.prepareStatement
 						("update employees set salary = ? where employee_id = ?");

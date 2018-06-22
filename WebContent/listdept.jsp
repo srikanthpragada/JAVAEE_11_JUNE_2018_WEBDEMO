@@ -9,20 +9,23 @@
 </head>
 <body>
 	<h2>Departments</h2>
-	<hr/>
-	<%
-		CachedRowSet rs = new OracleCachedRowSet();
-		rs.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
-		rs.setUsername("hr");
-		rs.setPassword("hr");
-		rs.setCommand("select * from departments");
-		rs.execute();
-		out.println("<ul>");
-		while(rs.next()) {
-			out.println( "<li>" + rs.getString("department_name") + "</li>");
-		}
-		out.println("</ul>");
-	%>
-
+	<hr />
+	<ul>
+		<%
+			CachedRowSet rs = new OracleCachedRowSet();
+			rs.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
+			rs.setUsername("hr");
+			rs.setPassword("hr");
+			rs.setCommand("select * from departments");
+			rs.execute();
+			out.println("<ul>");
+			while (rs.next()) {
+		%>
+		<li><%=rs.getString("department_name")%></li>
+		<%
+			}
+		%>
+		
+	</ul>
 </body>
 </html>

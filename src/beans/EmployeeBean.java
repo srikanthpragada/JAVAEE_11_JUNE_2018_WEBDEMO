@@ -26,8 +26,13 @@ public class EmployeeBean {
 	}
 
 	public boolean process() {
-		try (Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr")) {
-			PreparedStatement ps = con.prepareStatement("update employees set salary = ? where employee_id = ?");
+
+		Connection con = null;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");  // Load driver 
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+			PreparedStatement ps = con.prepareStatement
+					("update employees set salary = ? where employee_id = ?");
 
 			ps.setInt(1, salary);
 			ps.setInt(2, empid);
@@ -37,6 +42,11 @@ public class EmployeeBean {
 		} catch (Exception ex) {
 			System.out.println("Error -->" + ex.getMessage());
 			return false;
+		} finally {
+			try {
+				con.close();
+			} catch (Exception ex) {
+			}
 		}
 	}
 
