@@ -4,6 +4,10 @@
   <welcome-file-list>
     <welcome-file>intr.html</welcome-file>
   </welcome-file-list>
+  <context-param>
+    <param-name>oraurl</param-name>
+    <param-value>jdbc:oracle:thin:@localhost:1521:xe</param-value>
+  </context-param>
   <servlet>
     <servlet-name>TodayServlet</servlet-name>
     <servlet-class>servlets.TodayServlet</servlet-class>
@@ -16,4 +20,7 @@
     <servlet-name>TodayServlet</servlet-name>
     <url-pattern>/now</url-pattern>
   </servlet-mapping>
+  <session-config>
+     <session-timeout>3</session-timeout>
+  </session-config>
 </web-app>
