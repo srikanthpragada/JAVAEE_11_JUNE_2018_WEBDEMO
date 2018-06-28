@@ -8,8 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-
- <tags:jobs />
+ <select>
+    <tags:jobs3>
+       <option value="${id}">${title} </option>
+    </tags:jobs3>
+ </select>
+ <ul>
+ <tags:jobs3>
+    <li>${title}, ${min} </li> 
+ </tags:jobs3>	
+</ul>
 
 </body>
 </html>

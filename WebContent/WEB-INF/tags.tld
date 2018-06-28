@@ -16,4 +16,22 @@
 		<tag-class>tags.JobsHandler</tag-class>
 		<body-content>empty</body-content>
 	</tag>
+	
+	<tag>
+		<name>jobs2</name>
+		<tag-class>tags.Jobs2Handler</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+		  <name>title</name>
+		  <rtexpvalue>true</rtexpvalue>
+		  <type>java.lang.String</type>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>jobs3</name>
+		<tag-class>tags.Jobs3Handler</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
+	
 </taglib>	
