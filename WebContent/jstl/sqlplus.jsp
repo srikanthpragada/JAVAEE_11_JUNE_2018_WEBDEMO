@@ -26,27 +26,26 @@
         </sql:query>
 	</c:catch>
 
+  
+	<c:if test="${!empty pageScope.ex}">
+		<h4>Error : ${pageScope.ex.message}</h4>
+	</c:if>
 
-	<%
-	    // Find out whether any exception was thrown by previous block 
-		Exception ex = (Exception) pageContext.getAttribute("ex");
-		if (ex != null) {
-			out.println(ex.getMessage());
-			return;
-		}
-	%>
+	<c:if test="${empty pageScope.ex}">
 
-	<table border="1" cellpadding="3" width="100%">
-		<tr>
-			<c:forEach var="colname" items="${result.columnNames}">
-				<th>${colname}</th>
-			</c:forEach>
-		</tr>
-
-		<c:forEach var="row" items="${result.rowsByIndex}">
+		<table border="1" cellpadding="3" width="100%">
 			<tr>
-				<c:forEach var="colvalue" items="${row}">
-					<td>${colvalue}</td>
+				<c:forEach var="colname" items="${result.columnNames}">
+					<th>${colname}</th>
 				</c:forEach>
 			</tr>
-		</c:forEach>
+
+			<c:forEach var="row" items="${result.rowsByIndex}">
+				<tr>
+					<c:forEach var="colvalue" items="${row}">
+						<td>${colvalue}</td>
+					</c:forEach>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:if>
