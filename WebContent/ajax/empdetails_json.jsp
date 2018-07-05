@@ -1,5 +1,6 @@
-<%@ page import="java.sql.*, javax.json.*"  contentType="application/json"%>
-<%
+<%@ page import="java.sql.*"  contentType="application/json"%>
+<%  
+/*
     String empid = request.getParameter("empid");
     // connect to oracle using thin driver
     Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -17,6 +18,7 @@
     rs.close();
     st.close();
     con.close();
+    */
 
 %>
 
