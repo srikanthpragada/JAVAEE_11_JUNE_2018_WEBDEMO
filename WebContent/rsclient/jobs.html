@@ -6,11 +6,48 @@
 <script src="../ajax/jquery/jquery-3.1.0.js"></script>
 <script>
  function getJob() {
-	 $.getJSON("http://localhost:8888/webdemo/rest/jobs/" + $("#jobid").val(),{}, 
-			   function(resp) {
-		             $("#jobtitle").val(resp.title)
-	           }
-	 );
+	 $.ajax("http://localhost:8888/webdemo/rest/jobs/" + $("#jobid").val(),
+			{
+		      'success' : showTitle,
+		      'error' :   showError,
+		      'dataType' : 'json'
+			}
+     );
+ }
+
+ function addJob() {
+	 $.ajax("http://localhost:8888/webdemo/rest/jobs",
+			{
+		      'error'  :  function() { alert("Sorry! Could not add job!") },
+	          'success':  function() { alert("Job has been added successfully!") },
+		      'method' : 'POST',
+		      'data'   : { 
+		    	              'id' : $("#jobid").val(), 
+		    	              'title' : $("#jobtitle").val()
+		    	         } 
+			}
+     );
+ }
+ 
+ function deleteJob() {
+	 $.ajax("http://localhost:8888/webdemo/rest/jobs/" + $("#jobid").val(),
+			{
+		      'error'  :  function() { alert("Sorry! Could not delete job!") },
+	          'success':  function() { alert("Job has been deleted successfully!") },
+		      'method' : 'DELETE',
+		   }
+     );
+ }
+ 
+ function showTitle(job) 
+ {
+	 $("#jobtitle").val(job.title)
+ }
+ 
+ function showError()
+ {
+	$("#jobtitle").val("");
+	alert("Job Id Not Found!");
  }
 </script>
 </head>
@@ -24,6 +61,8 @@ Job Title <br/>
 <input type="text" id="jobtitle"/>
 <p/>
 <button onclick="getJob()">Get</button>
+<button onclick="addJob()">Add</button>
+<button onclick="deleteJob()">Delete</button>
 
 </body>
 </html>
